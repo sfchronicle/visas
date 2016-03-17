@@ -1,0 +1,71 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= json.project.title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <%= t.include("partials/_head.html") %>
+  </head>
+  <body>
+
+    <responsive-child>
+
+      <div class="outer">
+
+          <div class="chart-hed">
+            Where foreign professionals working in the US came from in <span class="info"></span>
+          </div>
+
+        <div class="chart">
+
+          <div class="dropdown">
+            Choose a year:
+            <select name="select">
+              <option selected="selected" disabled="disabled">--</option>
+              <% for (var i = 2014; i > 1996; i--) { %>
+                <option value= <%= i %> > <%= i %> </option>
+              <% } %>
+            </select>
+
+            <div class="controls">
+              <div class="start selected"><i class="fa fa-play"></i></div>
+              <div class="pause"><i class="fa fa-pause"></i></div>
+            </div>
+          </div>
+
+          <div class="legend-container">
+            <div class="legend">Continent Key</div>
+            <div class="legend-element"><div class="europe swatch"></div><div class="key">Europe</div></div>
+            <div class="legend-element"><div class="asia swatch"></div><div class="key">Asia</div></div>
+            <div class="legend-element"><div class="namerica swatch"></div><div class="key">North America</div></div>
+            <div class="legend-element"><div class="samerica swatch"></div><div class="key">South America</div></div>
+            <div class="legend-element"><div class="oceania swatch"></div><div class="key">Oceania</div></div>
+          </div>
+
+          <div class="bubbles">
+            <div class="tooltip"></div>
+          </div>
+
+          <div class="note"><i class="fa fa-hand-o-right"></i>Hover over or click on a bubble for more information.</div>
+        </div>
+
+        <div class="source">
+          <em>Source: This is the source</em>
+        </div>
+        <div class="credit">Emma O'Neill / San Francisco Chronicle</div>
+
+      </div>
+
+    </responsive-child>
+
+    <script>
+      var visaData = <%= JSON.stringify(csv.visa_data) %>;
+    </script>
+
+    <script src="app.js" async></script>
+    <%= t.include("partials/_foot.html") %>
+    <%= t.include("partials/_helloSFC.html") %>
+  </body>
+</html>
