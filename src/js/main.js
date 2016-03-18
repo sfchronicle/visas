@@ -48,30 +48,30 @@ var showTooltip = function(d, target) {
     svg.selectAll('.node').selectAll("circle")
       .style("fill", function(d) {
         if (d.Continent == "Europe") {
-          return "#AA3939"
+          return "#99D4B5"
         } else if (d.Continent == "Asia") {
-          return "#669999"
+          return "#97BAB2"
         } else if (d.Continent == "North America"){
-          return "#226666"
+          return "#CAFFB9"
         } else if (d.Continent == "South America"){
-          return "#55AA55"
+          return "#94C661"
         } else if (d.Continent == "Oceania"){
-          return "#D46A6A"
+          return "#C0D461"
         }
       } )
     d3.select(target.querySelector("circle")) //darker colors on hover
         .style("fill", function(d) {
           if (d.Continent == "Europe") {
-          return "#770606"
-        } else if (d.Continent == "Asia") {
-          return "#336666"
-        } else if (d.Continent == "North America"){
-          return "#003333"
-        } else if (d.Continent == "South America"){
-          return "#227722"
-        } else if (d.Continent == "Oceania"){
-          return "#A13737"
-        }
+            return "#73AE8F"
+          } else if (d.Continent == "Asia") {
+            return "#71948C"
+          } else if (d.Continent == "North America"){
+            return "#A4D993"
+          } else if (d.Continent == "South America"){
+            return "#6EA03B"
+          } else if (d.Continent == "Oceania"){
+            return "#9AAE3B"
+          }
       })
 
     // tooltip info
@@ -89,15 +89,15 @@ var hideTooltip = function(d, target) {
     svg.selectAll('.node').selectAll("circle")
       .style("fill", function(d) {
         if (d.Continent == "Europe") {
-          return "#AA3939"
+          return "#99D4B5"
         } else if (d.Continent == "Asia") {
-          return "#669999"
+          return "#97BAB2"
         } else if (d.Continent == "North America"){
-          return "#226666"
+          return "#CAFFB9"
         } else if (d.Continent == "South America"){
-          return "#55AA55"
+          return "#94C661"
         } else if (d.Continent == "Oceania"){
-          return "#D46A6A"
+          return "#C0D461"
         }
       })
     tooltip.classList.remove("show");
@@ -139,15 +139,15 @@ var drawBubbles = function(selectedYear) {
     .style('opacity', 1)
     .style("fill", function(d) {
       if (d.Continent == "Europe") {
-        return "#AA3939"
+        return "#99D4B5"
       } else if (d.Continent == "Asia") {
-        return "#669999"
+        return "#97BAB2"
       } else if (d.Continent == "North America"){
-        return "#226666"
+        return "#CAFFB9"
       } else if (d.Continent == "South America"){
-        return "#55AA55"
+        return "#94C661"
       } else if (d.Continent == "Oceania"){
-        return "#D46A6A"
+        return "#C0D461"
       }
     });
 
