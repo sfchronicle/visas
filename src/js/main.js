@@ -22,19 +22,19 @@ var margin = {
 }
 
 var width = diameter-margin.left-margin.right;
-var height = diameter-50;
+var height = diameter-50; //-50 is because the bubbles aren't arranged so they're square
 
 var svg = d3.select(".bubbles").append('svg')
   .attr('width', width + margin.left + margin.right)
   .attr('height', height)
   .append("g")
-  .attr("transform", "translate(" + margin.left + "," + 0 + ")");
+  .attr("transform", "translate(" + margin.left + "," + 0 + ")"); // giving the bubbles some padding, so that the text won't get cut off on the right and left margins
 
 var bubble = d3.layout.pack()
     //.sort(null)
     .sort(function(a, b) {
       return -(a.value - b.value);
-    })
+    }) // sorting from biggest to smallest
     .size([width, height])
     .padding(2)
     .value(d => d.Visas);
@@ -59,7 +59,7 @@ var showTooltip = function(d, target) {
           return "#D46A6A"
         }
       } )
-    d3.select(target.querySelector("circle"))
+    d3.select(target.querySelector("circle")) //darker colors on hover
         .style("fill", function(d) {
           if (d.Continent == "Europe") {
           return "#770606"
@@ -74,6 +74,7 @@ var showTooltip = function(d, target) {
         }
       })
 
+    // tooltip info
     tooltip.classList.add("show");
     tooltip.innerHTML = `
       <div>Country: ${d.Geography}</div>
@@ -226,7 +227,7 @@ var tick = function() {
   drawBubbles(years[i]);
   updateInfo(years[i]);
   i = (i + 1) % years.length;
-  loop = setTimeout(tick, i == 0 ? 1500 : 1000);
+  loop = setTimeout(tick, i == 0 ? 1700 : 1000);
 };
 
 tick();
