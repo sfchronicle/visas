@@ -5,20 +5,38 @@
 require("component-responsive-frame/child");
 var d3 = require("d3/d3.min.js");
 
-var diameter = 500,
-    dropdown = document.querySelector("select");
+if (screen.width > 768) {
+  var diameter = 700,
+      dropdown = document.querySelector("select");
+} else if (screen.width <= 768 && screen.width > 480) {
+  var diameter = 500,
+      dropdown = document.querySelector("select");
+} else if (screen.width <= 480) {
+  var diameter = 320,
+      dropdown = document.querySelector("select");
+}
+
+var margin = {
+  right: 15,
+  left: 15
+}
+
+var width = diameter-margin.left-margin.right;
+var height = diameter-50;
 
 var svg = d3.select(".bubbles").append('svg')
-  .attr('width', diameter)
-  .attr('height', diameter)
+  .attr('width', width + margin.left + margin.right)
+  .attr('height', height)
+  .append("g")
+  .attr("transform", "translate(" + margin.left + "," + 0 + ")");
 
 var bubble = d3.layout.pack()
     //.sort(null)
     .sort(function(a, b) {
       return -(a.value - b.value);
     })
-    .size([diameter, diameter])
-    .padding(1.5)
+    .size([width, height])
+    .padding(2)
     .value(d => d.Visas);
 
 // show tooltip
@@ -44,21 +62,22 @@ var showTooltip = function(d, target) {
     d3.select(target.querySelector("circle"))
         .style("fill", function(d) {
           if (d.Continent == "Europe") {
-          return "#912020"
+          return "#770606"
         } else if (d.Continent == "Asia") {
-          return "#4D8080"
+          return "#336666"
         } else if (d.Continent == "North America"){
-          return "#094D4D"
+          return "#003333"
         } else if (d.Continent == "South America"){
-          return "#3C913C"
+          return "#227722"
         } else if (d.Continent == "Oceania"){
-          return "#BB5151"
+          return "#A13737"
         }
       })
 
     tooltip.classList.add("show");
     tooltip.innerHTML = `
       <div>Country: ${d.Geography}</div>
+      <div>Continent: ${d.Continent}</div>
       <div>Visas issued: ${d.Visas}</div>
     `;
   }
@@ -137,8 +156,15 @@ var drawBubbles = function(selectedYear) {
     .attr("dy", ".3em")
     .style("text-anchor", "middle")
     .style("fill", "black")
-    .style("font-size", "10px")
-    .text(function(d) { if (d.Geography) { return d.Geography.substring(0, d.r); } });
+    .style("font-size", "12px")
+    .text(function(d) {
+      if (d.Geography && (d.Geography.length*4 < d.r)) {
+        return d.Geography.substring(0, d.r);
+      } else if (d.Geography) {
+        return d.Abbreviation;
+      }
+    });
+    //.text(function(d) { if (d.Geography) { return d.Geography.substring(0, d.r); } });
 
   // transition for bubble translation
   var transition = node.transition()
