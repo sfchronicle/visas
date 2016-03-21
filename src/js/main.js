@@ -6,23 +6,33 @@ require("component-responsive-frame/child");
 var d3 = require("d3/d3.min.js");
 
 if (screen.width > 768) {
-  var diameter = 700,
+  var diameter = 500,
       dropdown = document.querySelector("select");
+  var margin = {
+    right: 15,
+    left: 15
+  }
+  var topbuffer = 20;
 } else if (screen.width <= 768 && screen.width > 480) {
   var diameter = 500,
       dropdown = document.querySelector("select");
+  var margin = {
+    right: 15,
+    left: 15
+  }
+  var topbuffer = 20;
 } else if (screen.width <= 480) {
-  var diameter = 320,
+  var diameter = 360,
       dropdown = document.querySelector("select");
-}
-
-var margin = {
-  right: 15,
-  left: 15
+  var margin = {
+    right: 5,
+    left: 5
+  }
+  var topbuffer = 20;
 }
 
 var width = diameter-margin.left-margin.right;
-var height = diameter-50; //-50 is because the bubbles aren't arranged so they're square
+var height = diameter-topbuffer; //because the bubbles aren't arranged so they're square
 
 var svg = d3.select(".bubbles").append('svg')
   .attr('width', width + margin.left + margin.right)
