@@ -1,7 +1,3 @@
-// require("./lib/social");
-// require("./lib/ads");
-// var track = require("./lib/tracking");
-
 require("component-responsive-frame/child");
 //var d3 = require("d3/d3.js");
 
@@ -12,12 +8,29 @@ require("component-responsive-frame/child");
 // var chart = new Sankey(g);
 
 var colors = {
-      'environment':         '#edbd00',
-      'social':              '#367d85',
-      'animals':             '#97ba4c',
-      'health':              '#f5662b',
-      'research_ingredient': '#3f3e47',
-      'fallback':            '#9f9fa3'
+
+      'santaclara': '#edbd00',
+      'sanfrancisco': '#367d85',
+      'alameda': '#97ba4c',
+      'sanmateo': '#f5662b',
+
+      'apple': '#73AE8F',
+      'junipernetworks': '#71948C',
+      'pricewaterhousecoopers': '#A4D993',
+      'adobe': '#6EA03B',
+      'synopsys': '#9AAE3B',
+      'syntel': '#367d85',
+      'facebook': '#97ba4c',
+      'symantec': '#f5662b',
+      'nvidia': '#edbd00',
+
+      '<50k': '#73AE8F',
+      '50k-100k': '#71948C',
+      '100k-150k': '#A4D993',
+      '>150k': '#6EA03B',
+
+      'fallback': 'red'
+
     };
 
 //set up graph in same style as original example but empty
@@ -28,9 +41,9 @@ h1bData.forEach(function (d) {
   if (d.pay < 50000) {
     pay_category = "<50K";
   } else if (d.pay >= 50000 && d.pay < 100000) {
-    pay_category = "between 50K and 100K";
+    pay_category = "50K - 100K";
   } else if (d.pay >= 100000 && d.pay < 150000) {
-    pay_category = "between 100K and 150K";
+    pay_category = "100K - 150K";
   } else {
     pay_category = ">150K";
   }
@@ -62,9 +75,6 @@ h1bData.forEach(function (d) {
    graph.nodes[i] = { "name": d };
  });
 
- console.log("graph is:");
- console.log(graph);
-
 var chart = d3.select("#sankey-graph").append("svg").chart("Sankey.Path");
 chart
   .name(label)
@@ -85,13 +95,12 @@ function label(node) {
 }
 
 function color(node, depth) {
-  console.log(node);
-  // var id = node.id.replace(/(_score)?(_\d+)?$/, '');
-  // if (colors[id]) {
-  //   return colors[id];
-  // } else if (depth > 0 && node.targetLinks && node.targetLinks.length == 1) {
-  //   return color(node.targetLinks[0].source, depth-1);
-  // } else {
+  var id = node.name.toLowerCase().split(" ").join("");
+  if (colors[id]) {
+    return colors[id];
+  } else if (depth > 0 && node.targetLinks && node.targetLinks.length == 1) {
+    return color(node.targetLinks[0].source, depth-1);
+  } else {
     return null;
-  // }
+  }
 }
