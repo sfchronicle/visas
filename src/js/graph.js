@@ -1,11 +1,7 @@
 require("component-responsive-frame/child");
-//var d3 = require("d3/d3.js");
 
-// var d3 = require('d3');
-// var Sankey = require('d3.chart.sankey');
-//
-// var g = d3.select('svg').append('g');
-// var chart = new Sankey(g);
+var d3 = require('d3');
+var Sankey = require('d3.chart.sankey');
 
 var colors = {
 
