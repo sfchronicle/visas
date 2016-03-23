@@ -1,13 +1,34 @@
 @import "sfchronicle";
 @import "fonts";
 
-@block: "AntennaMedium";
-@bold: "AntennaBold";
+@block: "AntennaExtraLight";
+@bold: "AntennaMedium";
 
 body {
   font-family: @block;
   max-width: 700px;
 }
+
+
+#sankey-graph {
+  height: 500px;
+  font: 13px sans-serif;
+}
+.node rect {
+  fill-opacity: .9;
+  shape-rendering: crispEdges;
+  stroke-width: 0;
+}
+.node text {
+  text-shadow: 0 1px 0 #fff;
+}
+.link {
+  fill: none;
+  stroke: #000;
+  stroke-opacity: .2;
+}
+
+
 
 @dark-gray: lighten(#366473,10%);
 @light-gray: #B2B2B2;
