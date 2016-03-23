@@ -1,7 +1,7 @@
 require("component-responsive-frame/child");
 
 var d3 = require('d3');
-var Sankey = require('d3.chart.sankey');
+var Sankey = require('./lib/d3.chart.sankey');
 
 var colors = {
 
