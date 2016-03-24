@@ -555,7 +555,11 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    function ascendingDepth(a, b) {
-	      return a.y - b.y;
+				if (a.name == "> 150K" || b.name == "> 150K") {
+					return b.y-a.y;
+				} else {
+		      return a.y - b.y;
+				}
 	    }
 	  }
 
@@ -697,7 +701,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var chart = this;
 
 	    chart.features.selection = null;
-	    chart.features.unselectedOpacity = 0.2;
+	    chart.features.unselectedOpacity = 0.03;
 
 	    chart.on("link:mouseover", chart.selection);
 	    chart.on("link:mouseout", function() { chart.selection(null); });

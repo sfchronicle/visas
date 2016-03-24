@@ -5,25 +5,39 @@ var Sankey = require('./lib/d3.chart.sankey');
 
 var colors = {
 
-      'santaclara': '#edbd00',
-      'sanfrancisco': '#367d85',
-      'alameda': '#97ba4c',
-      'sanmateo': '#f5662b',
+      'santaclaracounty': '#76AE5D',
+      'sanfranciscocounty': '#64403E',
+      'alamedacounty': '#CDC776',
+      'sanmateocounty': '#A5AA52',
 
-      'apple': '#73AE8F',
-      'junipernetworks': '#71948C',
-      'pricewaterhousecoopers': '#A4D993',
-      'adobe': '#6EA03B',
-      'synopsys': '#9AAE3B',
-      'syntel': '#367d85',
-      'facebook': '#97ba4c',
-      'symantec': '#f5662b',
-      'nvidia': '#edbd00',
+      'a2zdevelopment': '#C9CEBD',
+      'adobe': '#B2BCAA',
+      'apple': '#838E83',
+      'cisco': '#6C6061',
+      'deloitte': '#996B7D',
+      'facebook': '#FDE8E9',
+      'google': '#E3BAC6',
+      'hclamerica': '#BC9EC1',
+      'hclglobal': '#596475',
+      'infosys': '#DBF4AD',
+      'intuit': '#EEF0F2',
+      'juniper': '#C6C7C4',
+      'mindtree': '#A2999E',
+      'mphasis': '#846A6A',
+      'oracle': '#353B3C',
+      'pwc': '#92DCE5',
+      'synopsys': '#7C7C7C',
+      'tata': '#EEE5E9',
+      'uber': '#383D3B',
+      'wipro': '#EABDA8',
+      'zensar': '#A0B2A6',
+      'nvidia': '#CBBFBB',
+      'samsung': '#61988E',
 
-      '<50k': '#73AE8F',
-      '50k-100k': '#71948C',
-      '100k-150k': '#A4D993',
-      '>150k': '#6EA03B',
+      '<50k': '#493843',
+      '100k-50k': '#DBF4AD',
+      '150k-100k': '#838E83',
+      '>150k': '#996B7D',
 
       'fallback': 'red'
 
@@ -35,20 +49,25 @@ var graph = {"nodes" : [], "links" : []};
 h1bData.forEach(function (d) {
   var pay_category = "";
   if (d.pay < 50000) {
-    pay_category = "<50K";
+    pay_category = "< 50K";
   } else if (d.pay >= 50000 && d.pay < 100000) {
-    pay_category = "50K - 100K";
+    pay_category = "100K - 50K";
   } else if (d.pay >= 100000 && d.pay < 150000) {
-    pay_category = "100K - 150K";
+    pay_category = "150K - 100K";
   } else {
-    pay_category = ">150K";
+    pay_category = "> 150K";
   }
   graph.nodes.push({ "name": d.source });
   graph.nodes.push({ "name": d.target });
+  graph.nodes.push({ "name": pay_category });
+
+  // graph.nodes.push({ "total": 10 });
+  // graph.nodes.push({ "total": 10 });
+  // graph.nodes.push({ "total": 10 });
+
   graph.links.push({ "source": d.source,
                      "target": d.target,
                      "value": +d.value });
-   graph.nodes.push({ "name": pay_category });
    graph.links.push({ "source": d.target,
                       "target": pay_category,
                       "value": +d.value });
@@ -80,14 +99,15 @@ chart
   .colorLinks(function(link) {
     return color(link.source, 4) || color(link.target, 1) || colors.fallback;
   })
-  .nodeWidth(15)
+  .nodeWidth(20)
   .nodePadding(10)
   .spread(true)
   .iterations(0)
   .draw(graph);
 
 function label(node) {
-  return node.name.replace(/\s*\(.*?\)$/, '');
+  return node.name;
+  //return [node.name + "(" node.total + ")"];
 }
 
 function color(node, depth) {

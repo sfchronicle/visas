@@ -19,28 +19,26 @@
           </div>
 
           <div class="chatter">
-            We map each visa application request for a set of employees for a given position. Roll over the counties and companies to see the flow of visa holders.
+            We map each visa application request for a set of employees for a given position. Roll over the counties and companies to see the mapping of visa applications.
           </div>
 
-        <div class="chart">
 
           <div id="sankey-graph"></div>
 
-        <div class="source">
-          <em>Source: This is the source</em>
-        </div>
-        <div class="credit">Emma O'Neill / San Francisco Chronicle</div>
+          <div class="source">
+            <em>Source: This is the source</em>
+          </div>
+          <div class="credit">Emma O'Neill / San Francisco Chronicle</div>
 
-      </div>
 
     </responsive-child>
 
     <script>
-      var h1bData = <%= JSON.stringify(csv.H1Bflow_supershort) %>;
-      console.log(h1bData);
+      var h1bData = <%= JSON.stringify(csv.top_20_bay_area_half) %>;
+      //var h1bData = <%= JSON.stringify(csv.H1Bflow_supershort) %>;
     </script>
 
-    
+
 
     <script src="../graph.js"></script>
     <%= t.include("partials/_foot.html") %>

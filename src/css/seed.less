@@ -7,26 +7,39 @@
 body {
   font-family: @block;
   max-width: 600px;
+  margin: auto;
 }
 
 // FOR THE SANKEY GRAPH
 
 .chatter {
   text-align: center;
-  font-size: 16px;
+  font-size: 18px;
+  @media @mobile {
+    width: 90%;
+    margin: auto;
+  }
 }
 
 #sankey-graph {
   height: 500px;
-  font: 13px sans-serif;
+  width: 600px;
+  //font-family: 13px sans-serif;
+  @media @mobile {
+    width: 95%;
+    margin: auto;
+  }
 }
 .node rect {
-  fill-opacity: .9;
+  fill-opacity: .8;
   shape-rendering: crispEdges;
   stroke-width: 0;
 }
 .node text {
   text-shadow: 0 1px 0 #fff;
+  font-family: "AntennaMedium";
+  text-transform: uppercase;
+  font-weight:500;
 }
 .link {
   fill: none;
@@ -112,7 +125,7 @@ body {
 }
 
 .chart {
-  width: 700px;
+  width: 600px;
   margin: auto;
   @media @tablet {
     width: 500px;
