@@ -5,10 +5,10 @@ var Sankey = require('./lib/d3.chart.sankey');
 
 var colors = {
 
-      'santaclaracounty': '#76AE5D',
+      'santaclaracounty': '#6C7687',
       'sanfranciscocounty': '#64403E',
       'alamedacounty': '#CDC776',
-      'sanmateocounty': '#A5AA52',
+      'sanmateocounty': '#97AAC9',
 
       'a2zdevelopment': '#C9CEBD',
       'adobe': '#B2BCAA',
@@ -19,17 +19,17 @@ var colors = {
       'google': '#E3BAC6',
       'hclamerica': '#BC9EC1',
       'hclglobal': '#596475',
-      'infosys': '#DBF4AD',
+      'infosys': '#828FA3',
       'intuit': '#EEF0F2',
       'juniper': '#C6C7C4',
       'mindtree': '#A2999E',
       'mphasis': '#846A6A',
       'oracle': '#353B3C',
-      'pwc': '#92DCE5',
+      'pwc': '#6F7D8C',
       'synopsys': '#7C7C7C',
       'tata': '#EEE5E9',
       'uber': '#383D3B',
-      'wipro': '#EABDA8',
+      'wipro': '#9C8B9E',
       'zensar': '#A0B2A6',
       'nvidia': '#CBBFBB',
       'samsung': '#61988E',
@@ -106,7 +106,16 @@ chart
   .draw(graph);
 
 function label(node) {
-  return node.name;
+  console.log(node.name);
+  if (node.name == "SAN FRANCISCO COUNTY") {
+    return node.name + "(1770)";
+  } else if (node.name == "SANTA CLARA COUNTY") {
+    return node.name + "(10465)"
+  } else if (node.name == "SAN MATEO COUNTY") {
+    return node.name + "(1681)"
+  } else {
+    return node.name;
+  }
   //return [node.name + "(" node.total + ")"];
 }
 

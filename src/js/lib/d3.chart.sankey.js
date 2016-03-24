@@ -630,7 +630,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    if (!chart.base.attr("height")) { chart.base.attr("height", chart.base.node().parentNode.clientHeight); }
 
 	    // dimensions, with space for node stroke and labels (smallest at bottom)
-	    chart.features.margins = {top: 1, right: 1, bottom: 6, left: 1};
+	    chart.features.margins = {top: 10, right: 1, bottom: 6, left: 1};
 	    chart.features.width   = chart.base.attr("width") - chart.features.margins.left - chart.features.margins.right;
 	    chart.features.height  = chart.base.attr("height") - chart.features.margins.top - chart.features.margins.bottom;
 
