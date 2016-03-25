@@ -5,39 +5,39 @@ var Sankey = require('./lib/d3.chart.sankey');
 
 var colors = {
 
-      'santaclaracounty': '#6C7687',
-      'sanfranciscocounty': '#64403E',
-      'alamedacounty': '#CDC776',
-      'sanmateocounty': '#97AAC9',
+      'santaclaracounty': '#6C85A5',
+      'sanfranciscocounty': '#D13D59',
+      //'alamedacounty': '#D04B61',
+      'sanmateocounty': '#889C6B',
 
-      'a2zdevelopment': '#C9CEBD',
-      'adobe': '#B2BCAA',
-      'apple': '#838E83',
-      'cisco': '#6C6061',
-      'deloitte': '#996B7D',
-      'facebook': '#FDE8E9',
-      'google': '#E3BAC6',
-      'hclamerica': '#BC9EC1',
-      'hclglobal': '#596475',
-      'infosys': '#828FA3',
-      'intuit': '#EEF0F2',
-      'juniper': '#C6C7C4',
-      'mindtree': '#A2999E',
+      'amazon': '#996B7D',
+      'adobe': '#A89170',
+      'apple': '#F79980',
+      'cisco': '#6E7B8E',
+      'deloitte': '#80A9D0',
+      'facebook': '#FFE599',
+      'google': '#FFCC32',
+      'hclamerica': '#99B4CF',
+      'hclglobal': '#99B4CF',
+      'infosys': '#E89EAC',
+      'intuit': '#9FA7B3',
+      'juniper': '#E59FA6',
+      'mindtree': '#61988E',
       'mphasis': '#846A6A',
-      'oracle': '#353B3C',
+      'oracle': '#EB8F6A',
       'pwc': '#6F7D8C',
-      'synopsys': '#7C7C7C',
-      'tata': '#EEE5E9',
-      'uber': '#383D3B',
+      'synopsys': '#F79980',
+      'tata': '#667A96',
+      'uber': '#FFE599',
       'wipro': '#9C8B9E',
-      'zensar': '#A0B2A6',
-      'nvidia': '#CBBFBB',
+      'zensar': '#D04B61',
+      'nvidia': '#996B7D',
       'samsung': '#61988E',
 
       '<50k': '#493843',
-      '100k-50k': '#A2999E',
-      '150k-100k': '#996B7D',
-      '>150k': '#838E83',
+      '100k-50k': '#80A9D0',
+      '150k-100k': '#F79980',
+      '>150k': '#FFE599',
 
       'fallback': 'red'
 
@@ -108,11 +108,11 @@ chart
 function label(node) {
   console.log(node.name);
   if (node.name == "SAN FRANCISCO COUNTY") {
-    return node.name + "(1770)";
+    return node.name + "(11227)";
   } else if (node.name == "SANTA CLARA COUNTY") {
-    return node.name + "(10465)"
+    return node.name + "(46346)"
   } else if (node.name == "SAN MATEO COUNTY") {
-    return node.name + "(1681)"
+    return node.name + "(5799)"
   } else {
     return node.name;
   }

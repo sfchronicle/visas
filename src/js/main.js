@@ -56,31 +56,32 @@ var looping = true;
 var showTooltip = function(d, target) {
   if (!looping) {
     svg.selectAll('.node').selectAll("circle")
+
       .style("fill", function(d) {
         if (d.Continent == "Europe") {
-          return "#99D4B5"
+          return "#FF708C"//"#99D4B5"
         } else if (d.Continent == "Asia") {
-          return "#97BAB2"
+          return '#869FBF'//"#97BAB2"
         } else if (d.Continent == "North America"){
-          return "#CAFFB9"
+          return '#A2B685'//"#CAFFB9"
         } else if (d.Continent == "South America"){
-          return "#94C661"
+          return '#FFE64C'//"#94C661"
         } else if (d.Continent == "Oceania"){
-          return "#C0D461"
+          return '#9C8B9E'//"#C0D461"
         }
       } )
     d3.select(target.querySelector("circle")) //darker colors on hover
         .style("fill", function(d) {
           if (d.Continent == "Europe") {
-            return "#73AE8F"
+            return "#E65773"//"#99D4B5"
           } else if (d.Continent == "Asia") {
-            return "#71948C"
+            return '#6D86A6'//"#97BAB2"
           } else if (d.Continent == "North America"){
-            return "#A4D993"
+            return '#899D6C'//"#CAFFB9"
           } else if (d.Continent == "South America"){
-            return "#6EA03B"
+            return '#E6CD33'//"#94C661"
           } else if (d.Continent == "Oceania"){
-            return "#9AAE3B"
+            return '#837285'//"#C0D461"
           }
       })
 
@@ -99,15 +100,15 @@ var hideTooltip = function(d, target) {
     svg.selectAll('.node').selectAll("circle")
       .style("fill", function(d) {
         if (d.Continent == "Europe") {
-          return "#99D4B5"
+          return "#FF708C"//"#99D4B5"
         } else if (d.Continent == "Asia") {
-          return "#97BAB2"
+          return '#869FBF'//"#97BAB2"
         } else if (d.Continent == "North America"){
-          return "#CAFFB9"
+          return '#A2B685'//"#CAFFB9"
         } else if (d.Continent == "South America"){
-          return "#94C661"
+          return '#FFE64C'//"#94C661"
         } else if (d.Continent == "Oceania"){
-          return "#C0D461"
+          return '#9C8B9E'//"#C0D461"
         }
       })
     tooltip.classList.remove("show");
@@ -149,15 +150,15 @@ var drawBubbles = function(selectedYear) {
     .style('opacity', 1)
     .style("fill", function(d) {
       if (d.Continent == "Europe") {
-        return "#99D4B5"
+        return "#FF708C"//"#99D4B5"
       } else if (d.Continent == "Asia") {
-        return "#97BAB2"
+        return '#869FBF'//"#97BAB2"
       } else if (d.Continent == "North America"){
-        return "#CAFFB9"
+        return '#A2B685'//"#CAFFB9"
       } else if (d.Continent == "South America"){
-        return "#94C661"
+        return '#FFE64C'//"#94C661"
       } else if (d.Continent == "Oceania"){
-        return "#C0D461"
+        return '#9C8B9E'//"#C0D461"
       }
     });
 
