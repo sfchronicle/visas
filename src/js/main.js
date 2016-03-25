@@ -59,7 +59,7 @@ var showTooltip = function(d, target) {
 
       .style("fill", function(d) {
         if (d.Continent == "Europe") {
-          return "#FF708C"//"#99D4B5"
+          return "#F79980"//"#99D4B5"
         } else if (d.Continent == "Asia") {
           return '#869FBF'//"#97BAB2"
         } else if (d.Continent == "North America"){
@@ -73,7 +73,7 @@ var showTooltip = function(d, target) {
     d3.select(target.querySelector("circle")) //darker colors on hover
         .style("fill", function(d) {
           if (d.Continent == "Europe") {
-            return "#E65773"//"#99D4B5"
+            return "#DE8067"//"#99D4B5"
           } else if (d.Continent == "Asia") {
             return '#6D86A6'//"#97BAB2"
           } else if (d.Continent == "North America"){
@@ -100,7 +100,7 @@ var hideTooltip = function(d, target) {
     svg.selectAll('.node').selectAll("circle")
       .style("fill", function(d) {
         if (d.Continent == "Europe") {
-          return "#FF708C"//"#99D4B5"
+          return "#F79980"//"#99D4B5"
         } else if (d.Continent == "Asia") {
           return '#869FBF'//"#97BAB2"
         } else if (d.Continent == "North America"){
@@ -150,7 +150,7 @@ var drawBubbles = function(selectedYear) {
     .style('opacity', 1)
     .style("fill", function(d) {
       if (d.Continent == "Europe") {
-        return "#FF708C"//"#99D4B5"
+        return "#F79980"//"#99D4B5"
       } else if (d.Continent == "Asia") {
         return '#869FBF'//"#97BAB2"
       } else if (d.Continent == "North America"){
