@@ -21,12 +21,40 @@ body {
   }
 }
 
+.divider-div {
+  border-bottom: 1px @df-border-gray solid;
+  width: 90%;
+  margin: auto;
+  margin-bottom: 10px;
+}
+
+.sankey-header {
+  margin: auto;
+  font-size: 14px;
+}
+
+.hed1, .hed2, .hed3 {
+  display: inline-block;
+  width: 31%;
+}
+.hed1 {
+  text-align: left;
+  margin-left: 7px;
+}
+.hed2 {
+  text-align: center;
+}
+.hed3 {
+  text-align: right;
+  margin-right: 5px;
+}
+
 #sankey-graph {
   height: 500px;
   width: 600px;
   //font-family: 13px sans-serif;
   @media @mobile {
-    width: 95%;
+    width: 98%;
     margin: auto;
   }
 
@@ -36,16 +64,17 @@ body {
     stroke-width: 0;
   }
   .node text {
-    //text-shadow: 0 1px 0 #fff;
-    font-family: "AntennaMedium";
+    font-family: @bold;
     text-transform: uppercase;
-    font-weight:500;
-    //color: white;
+  }
+  .node text-part2 {
+    font-family: @bold;
+    text-transform: uppercase;
   }
   .link {
     fill: none;
     stroke: #000;
-    stroke-opacity: .4;
+    stroke-opacity: .7;
   }
 
 }
@@ -144,6 +173,7 @@ body {
 
     .note {
       display: block;
+      margin-top: 7px;
     }
   }
 }

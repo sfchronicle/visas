@@ -89,7 +89,6 @@ var showTooltip = function(d, target) {
     tooltip.classList.add("show");
     tooltip.innerHTML = `
       <div>Country: ${d.Geography}</div>
-      <div>Continent: ${d.Continent}</div>
       <div>Visas issued: ${d.Visas}</div>
     `;
   }

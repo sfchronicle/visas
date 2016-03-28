@@ -170,8 +170,9 @@ return /******/ (function(modules) { // webpackBootstrap
 	          this.select("text")
 	            .text(chart.features.name)
 	            .attr("y", function(d) { return d.dy / 2; })
-	            .attr("x", function(d) { return hasTextLeft(d) ? (6 + chart.features.nodeWidth) : -6; })
+	            .attr("x", function(d) { return hasTextLeft(d) ? (2 + chart.features.nodeWidth) : -2; })
 	            .attr("text-anchor", function(d) { return hasTextLeft(d) ? "start" : "end"; });
+
 	        },
 
 	        "exit": function() {
@@ -555,10 +556,10 @@ return /******/ (function(modules) { // webpackBootstrap
 	    }
 
 	    function ascendingDepth(a, b) {
-				if (a.name == "> 150K" || b.name == "> 150K") {
-					return b.y-a.y;
+				if (a.name == "<$50K" || b.name == "<$50K") {
+					return a.y-b.y;
 				} else {
-		      return a.y - b.y;
+		      return b.y - a.y;
 				}
 	    }
 	  }

@@ -19,23 +19,29 @@
           </div>
 
           <div class="chatter">
-            We map each visa application request for a set of employees for a given position. Roll over the counties and companies to see the mapping of visa applications.
+            We map each visa application request in a county by an employer for a given position. Roll over the graph to see what positions employers want to fill with H1-B visa holders.
           </div>
 
+          <div class="divider-div"></div>
+
+          <div class="sankey-header">
+            <div class="hed1">visas requested by County</div>
+            <div class="hed2">by Company</div>
+            <div class="hed3">for Salary</div>
+          </div>
 
           <div id="sankey-graph"></div>
 
           <div class="source">
             <em>Source: This is the source</em>
           </div>
-          <div class="credit">Emma O'Neill / San Francisco Chronicle</div>
+          <div class="credit">Emma O'Neill & Joaquin Palomino / San Francisco Chronicle</div>
 
 
     </responsive-child>
 
     <script>
-      var h1bData = <%= JSON.stringify(csv.top_20_bay_area_quarter) %>;
-      //var h1bData = <%= JSON.stringify(csv.H1Bflow_supershort) %>;
+      var h1bData = <%= JSON.stringify(csv.final_data) %>;
     </script>
 
 

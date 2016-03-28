@@ -5,14 +5,14 @@ var Sankey = require('./lib/d3.chart.sankey');
 
 var colors = {
 
-      'santaclaracounty': '#6C85A5',
-      'sanfranciscocounty': '#D13D59',
+      'santaclara': '#6C85A5',
+      'sanfrancisco': '#D13D59',
       //'alamedacounty': '#D04B61',
-      'sanmateocounty': '#889C6B',
+      'sanmateo': '#889C6B',
 
       'amazon': '#996B7D',
       'adobe': '#A89170',
-      'apple': '#F79980',
+      'apple': '#61988E',
       'cisco': '#6E7B8E',
       'deloitte': '#80A9D0',
       'facebook': '#FFE599',
@@ -26,18 +26,18 @@ var colors = {
       'mphasis': '#846A6A',
       'oracle': '#EB8F6A',
       'pwc': '#6F7D8C',
-      'synopsys': '#F79980',
+      'synopsys': '#DE8067',
       'tata': '#667A96',
       'uber': '#FFE599',
       'wipro': '#9C8B9E',
       'zensar': '#D04B61',
       'nvidia': '#996B7D',
-      'samsung': '#61988E',
+      'samsung': '#DE8067',
 
-      '<50k': '#493843',
-      '100k-50k': '#80A9D0',
-      '150k-100k': '#F79980',
-      '>150k': '#FFE599',
+      '<$50k': '#493843',
+      '$50-100k': '#80A9D0',
+      '$100-$150k': '#DE8067',
+      '>$150k': '#FFE599',
 
       'fallback': 'red'
 
@@ -47,29 +47,15 @@ var colors = {
 var graph = {"nodes" : [], "links" : []};
 
 h1bData.forEach(function (d) {
-  var pay_category = "";
-  if (d.pay < 50000) {
-    pay_category = "< 50K";
-  } else if (d.pay >= 50000 && d.pay < 100000) {
-    pay_category = "100K - 50K";
-  } else if (d.pay >= 100000 && d.pay < 150000) {
-    pay_category = "150K - 100K";
-  } else {
-    pay_category = "> 150K";
-  }
   graph.nodes.push({ "name": d.source });
   graph.nodes.push({ "name": d.target });
-  graph.nodes.push({ "name": pay_category });
-
-  // graph.nodes.push({ "total": 10 });
-  // graph.nodes.push({ "total": 10 });
-  // graph.nodes.push({ "total": 10 });
+  graph.nodes.push({ "name": d.pay_category });
 
   graph.links.push({ "source": d.source,
                      "target": d.target,
                      "value": +d.value });
    graph.links.push({ "source": d.target,
-                      "target": pay_category,
+                      "target": d.pay_category,
                       "value": +d.value });
  });
 
@@ -100,23 +86,21 @@ chart
     return color(link.source, 4) || color(link.target, 1) || colors.fallback;
   })
   .nodeWidth(20)
-  .nodePadding(10)
+  .nodePadding(5)
   .spread(true)
   .iterations(0)
   .draw(graph);
 
 function label(node) {
-  console.log(node.name);
-  if (node.name == "SAN FRANCISCO COUNTY") {
-    return node.name + "(11227)";
-  } else if (node.name == "SANTA CLARA COUNTY") {
-    return node.name + "(46346)"
-  } else if (node.name == "SAN MATEO COUNTY") {
-    return node.name + "(5799)"
+  if (node.name == "SAN FRANCISCO") {
+    return node.name + " (11K)";
+  } else if (node.name == "SANTA CLARA") {
+    return node.name + " (46K)"
+  } else if (node.name == "SAN MATEO") {
+    return node.name + " (6K)"
   } else {
     return node.name;
   }
-  //return [node.name + "(" node.total + ")"];
 }
 
 function color(node, depth) {
