@@ -702,7 +702,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	    var chart = this;
 
 	    chart.features.selection = null;
-	    chart.features.unselectedOpacity = 0.03;
+	    chart.features.unselectedOpacity = 0.3;
 
 	    chart.on("link:mouseover", chart.selection);
 	    chart.on("link:mouseout", function() { chart.selection(null); });

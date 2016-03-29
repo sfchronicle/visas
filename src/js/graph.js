@@ -36,7 +36,7 @@ var colors = {
 
       '<$50k': '#493843',
       '$50-100k': '#80A9D0',
-      '$100-$150k': '#DE8067',
+      '$100-150k': '#DE8067',
       '>$150k': '#FFE599',
 
       'fallback': 'red'
@@ -92,11 +92,11 @@ chart
   .draw(graph);
 
 function label(node) {
-  if (node.name == "SAN FRANCISCO") {
+  if (node.name == "San Francisco") {
     return node.name + " (11K)";
-  } else if (node.name == "SANTA CLARA") {
+  } else if (node.name == "Santa Clara") {
     return node.name + " (46K)"
-  } else if (node.name == "SAN MATEO") {
+  } else if (node.name == "San Mateo") {
     return node.name + " (6K)"
   } else {
     return node.name;
