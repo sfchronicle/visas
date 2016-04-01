@@ -10,6 +10,12 @@ body {
   margin: auto;
 }
 
+@financial: #D13D59;
+@US: #6C85A5;
+@India: #FFCC32;
+@foreign: #996B7D;
+@tech: #EB8F6A;
+
 // FOR THE SANKEY GRAPH
 
 .chatter {
@@ -177,7 +183,7 @@ body {
   }
 }
 
-.chart-hed {
+.chart-hed, .bars-hed {
   font-size: 28px;
   text-align: center;
   font-weight: bold;
@@ -324,4 +330,152 @@ body {
   font-size: 11.5px;
   color: @df-middle-gray;
   text-transform: uppercase;
+}
+
+.legend {
+  font-size: 14px;
+  //text-align: center;
+  border: 1px solid @black;
+  border-radius: 6px;
+  width: 250px;
+  margin: auto;
+  margin-bottom: 10px;
+  @media @mobile {
+    margin-bottom: 15px;
+  }
+  padding: 5px;
+  .private-swath, .US-swath, .India-swath, .foreign-swath, .tech-swath {
+    height: 14px;
+    width: 14px;
+    //margin: 4px auto;
+    margin-left: 10px;
+    margin-bottom: 5px;
+  }
+   .private-swath {
+    margin-top: 5px;
+    background: @tech;
+  }
+  .US-swath {
+    background: @US;
+  }
+  .India-swath {
+    background: @India;
+  }
+  .foreign-swath {
+    background: @foreign;
+  }
+  .text {
+    width: 250px;
+    padding-left: 20px;
+    vertical-align: text-top;
+  }
+}
+
+.button-container {
+  text-align: center;
+  .button {
+    display: inline-block;
+    width: 200px;
+    text-align: center;
+    color: white;
+    margin: 2px 0;
+    cursor: pointer;
+    border-radius: 6px;
+    font-size: 15px;
+    padding: 2px;
+    margin-bottom: 10px;
+    &.active {
+      border: 2px solid @black;
+    }
+    &.workers {
+      background: @US;
+    }
+    &.lcas {
+      background: @US;
+    }
+  }
+}
+
+.bar-title {
+  float: left;
+  font-size:15px;
+  font-weight: bold;
+  width: 20%;
+  @media @mobile {
+    width: 100%;
+    font-weight: normal;
+  }
+}
+
+.lcas-chart, .workers-chart {
+  display: none;
+  max-width: 85%;
+  @media @mobile {
+    max-width: 100%;
+  }
+  &.active {
+    display: flex;
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    flex-direction: row;
+    @media @mobile {
+      display: block;
+    }
+  }
+}
+
+.bar-container {
+  clear: left;
+  text-align: left;
+  padding-top: 2px;
+  width: 80%;
+  @media @mobile {
+    width: 70%;
+  }
+
+  .filed-bar, .workers-bar {
+    height: 16px;
+    display: block;
+    margin: 2px 0;
+
+    @media @mobile {
+      height: 13px;
+    }
+  }
+  .workers-text, .lca-text {
+    font-size: 12px;
+    float: right;
+    margin-right: -60px;
+  }
+  .Tax {
+    background: @financial;
+  }
+  .US-based {
+    background: @US;
+  }
+  .India-based {
+    background: @India;
+  }
+  .Foreign-based {
+    background: @foreign;
+  }
+  .Private {
+    background: @tech;
+  }
+}
+
+&.up::after, &.down::after {
+  // position: absolute;
+  color: @df-dark-gray;  // color: rgb(188, 92, 35);
+  font-size: 0.7em;
+  // text-align: right;
+  margin-left: 4px;
+}
+&.up::after {
+  content: "\25B2";
+  padding-top: 0.2em;
+}
+&.down::after {
+  content: "\25BC";
+  padding-top: 0.2em;
 }

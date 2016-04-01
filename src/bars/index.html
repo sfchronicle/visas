@@ -1,0 +1,81 @@
+<!doctype html>
+<html>
+  <head>
+    <title><%= json.project.title %></title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+    <%= t.include("partials/_head.html") %>
+  </head>
+  <body ng-app="h1bvisas">
+
+    <responsive-child>
+
+      <div class="bars-hed">LCAs by Company</div>
+
+      <div class="chatter">Outsourcing companies inundate the something with LCA requests. Click on the headings to see how successful this strategy is for them and re-sort the lists.</div>
+
+      <div class="lcas-chart-container" ng-controller="VisaController">
+
+        <div class="button-container">
+
+          <div class="button workers"
+          ng-click="selectedTable = 'workers'; sortTable('order1')"
+          ng-class="{active:selectSort == 'order1',
+                    up: lastSort == 'order1' && sortOrder == -1,
+                    down: lastSort == 'order1' && sortOrder == 1 }">Workers requested</div>
+          <div class="button lcas"
+          ng-click="selectedTable = 'lcas'; sortTable('order2')"
+          ng-class="{active:selectSort == 'order2',
+                    up: lastSort == 'order2' && sortOrder == -1,
+                    down: lastSort == 'order2' && sortOrder == 1 }">LCAs filed</div>
+
+        </div>
+
+        <div class="legend">
+          <div class="private-swath"><div class="text">Private companies</div></div>
+          <div class="US-swath"><div class="text">US-based outsourcing firm</div></div>
+          <div class="India-swath"><div class="text">India-based outsourcing firm</div></div>
+          <div class="foreign-swath"><div class="text">Foreign-based outsourcing firm</div></div>
+        </div>
+
+        <div class="workers-chart" ng-repeat="co in bycompany"
+        ng-class="{'active':selectedTable == 'workers'}">
+          <div class="bar-title">{{co.company}}</div>
+            <div class="bar-container">
+              <div class="workers-bar {{co.company_description}}"
+                ng-style="{ width: {{co.workers_requested/max_len_workers*100}} + '%' }">
+                <div class="workers-text">{{co.workers_requested}}</div></div>
+            </div>
+        </div>
+
+        <div class="lcas-chart" ng-repeat="co in bycompany"
+        ng-class="{'active':selectedTable == 'lcas'}">
+          <div class="bar-title">{{co.company}}</div>
+            <div class="bar-container">
+              <div class="filed-bar {{co.company_description}}"
+                ng-style="{ width: {{co.lca_filed/max_len_lcas*100}} + '%' }">
+                <div class="lca-text">{{co.lca_filed}}</div></div>
+            </div>
+        </div>
+
+      </div>
+
+      <div class="source">
+        <em>Source: This is the source</em>
+      </div>
+      <div class="credit">Emma O'Neill  & Joaquin Palomino / San Francisco Chronicle</div>
+
+    </responsive-child>
+
+    <script>
+      var bycompany = <%= JSON.stringify(csv.lca_by_company) %>
+      console.log(bycompany);
+    </script>
+
+    <script src="../bars.js" async></script>
+    <%= t.include("partials/_foot.html") %>
+    <%= t.include("partials/_helloSFC.html") %>
+  </body>
+</html>
