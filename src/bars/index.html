@@ -46,7 +46,7 @@
             <div class="bar-container">
               <div class="workers-bar {{co.company_description}}"
                 ng-style="{ width: {{co.workers_requested/max_len_workers*100}} + '%' }">
-                <div class="workers-text">{{co.workers_requested}}</div></div>
+                <div class="workers-text {{co.company}}">{{co.workers_requested}}</div></div>
             </div>
         </div>
 
@@ -56,7 +56,7 @@
             <div class="bar-container">
               <div class="filed-bar {{co.company_description}}"
                 ng-style="{ width: {{co.lca_filed/max_len_lcas*100}} + '%' }">
-                <div class="lca-text">{{co.lca_filed}}</div></div>
+                <div class="lca-text {{co.company}}">{{co.lca_filed}}</div></div>
             </div>
         </div>
 

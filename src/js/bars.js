@@ -14,10 +14,6 @@ app.controller("VisaController",["$scope", "$filter", function($scope) {
   $scope.selectSort = "order1";
   $scope.sortOrder = 1;
 
-  console.log($scope.sortOrder);
-  console.log($scope.selectedTable);
-  console.log($scope.lastSort);
-
   $scope.sortTable = function(selectSort) {
 
     $scope.selectSort = selectSort;
@@ -46,11 +42,7 @@ app.controller("VisaController",["$scope", "$filter", function($scope) {
         return 0;
       }
     });
-
-    console.log($scope.sortOrder);
-    console.log($scope.selectedTable);
-    console.log($scope.lastSort);
-
+    
   };
 
 }]);
